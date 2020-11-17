@@ -2,6 +2,7 @@ import pandas as pd
 datasetn=pd.read_excel(r'C:Users\Pro\Documents\Population.xlsx')
 dataset.shape() #finding number of rows and columns in the sheet
 
+sheet=dataset.sheet_by_index(0)
 sheet.cell_value(0,0)
 for i in range(sheet.nrows): #finding death precentage for different ages
  if sheet.cell_value(i,4)>80: #ages 80+
