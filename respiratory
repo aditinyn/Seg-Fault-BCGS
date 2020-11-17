@@ -1,0 +1,54 @@
+#Finding relation between age and respiratory illness with respect to patient deaths
+import pandas as pd
+dataset=pd.read_excel(r'C:Users\Pro\Documents\Population.xlsx')
+
+sheet=dataset.sheet_by_index(0)
+sheet.cell_value(0,0)
+for i in range(sheet.nrows): 
+ if sheet.cell_value(i,4)>80: 
+  if sheet.cell_value(i,6)=="true":
+   respiratory=respiratory+1
+   if sheet.cell_value(i,8)=="dead":
+    dead=dead+1
+  eighty_death_percentage=(dead/respiratory)*100
+ elif sheet.cell_value(i,4)>60 and sheet.cell_value(i,4)<=80:
+  if sheet.cell_value(i,6)=="true":
+   respiratory=respiratory+1
+   if sheet.cell_value(i,8)=="dead":
+    dead=dead+1
+  sixty_death_percentage=(dead/respiratory)*100
+ elif sheet.cell_value(i,4)>40 and sheet.cell_value(i,4)<=60: 
+  if sheet.cell_value(i,6)=="true":
+   respiratory=respiratory+1
+   if sheet.cell_value(i,8)=="dead":
+    dead=dead+1
+  forty_death_percentage=(dead/respiratory)*100
+ elif sheet.cell_value(i,4)>20 and sheet.vell_value(i,4)<=40:
+  if sheet.cell_value(i,6)=="true":
+   respiratory=respiratory+1
+   if sheet.cell_value(i,8)=="dead":
+    dead=dead+1
+  twenty_death_percentage=(dead/respiratory)*100
+ elif sheet.cell_value(i,4)>10 and sheet.cell_value(i,4)<=20:
+  if sheet.cell_value(i,6)=="true":
+   respiratory=respiratory+1
+   if sheet.cell_value(i,8)=="dead":
+    dead=dead+1
+  ten_death_percentage=(dead/respiratory)*100
+ else:
+  if sheet.cell_value(i,6)=="true":
+   respiratory=respiratory+1
+   if sheet.cell_value(i,8)=="dead":
+    dead=dead+1
+  zero_death_percentage=(dead/respiratory)*100
+
+respiratory_percentage=[eighty_death_percentage, sixty_death_percentage, forty_death_percentage, twenty_death_percentage, ten_death_percentage, zero_death_percentage] #list of death percentage of each age group with respiratory illnesses
+
+print("Percentages of patient deaths associated with respiratory illnesses:")
+print("Age group","\t","Percentage of deaths")
+print("80+","\t",respiratory_percentage[0])
+print("60-80","\t",respiratory_percentage[1])
+print("40-60","\t",respiratory_percentage[2])
+print("20-40","\t",respiratory_percentage[3])
+print("10-20","\t", respiratory_percentage[4])
+print("0-10","\t",respiratory_percentage[5])
