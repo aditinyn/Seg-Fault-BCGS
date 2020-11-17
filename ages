@@ -1,0 +1,53 @@
+import pandas as pd
+datasetn=pd.read_excel(r'C:Users\Pro\Documents\Population.xlsx')
+dataset.shape() #finding number of rows and columns in the sheet
+
+sheet.cell_value(0,0)
+for i in range(sheet.nrows): #finding death precentage for different ages
+ if sheet.cell_value(i,4)>80: #ages 80+
+  if sheet.cell_value(i,8)=="alive":
+   alive=alive+1
+  else: 
+   dead=dead+1
+  eighty_death_percentage=(dead/alive+dead)*100
+ elif sheet.cell_value(i,4)>60 and sheet.cell_value(i,4)<=80: #ages 60-80
+  if sheet.cell_value(i,8)=="alive":
+   alive=alive+1
+  else: 
+   dead=dead+1
+  sixty_death_percentage=(dead/alive+dead)*100
+ elif sheet.cell_value(i,4)>40 and sheet.cell_value(i,4)<=60: #ages 40-60
+  if sheet.cell_value(i,8)=="alive":
+   alive=alive+1
+  else: 
+   dead=dead+1
+  forty_death_percentage=(dead/alive+dead)*100
+ elif sheet.cell_value(i,4)>20 and sheet.vell_value(i,4)<=40: #ages 20-40
+  if sheet.cell_value(i,8)=="alive":
+   alive=alive+1
+  else: 
+   dead=dead+1
+  twenty_death_percentage=(dead/alive+dead)*100
+ elif sheet.cell_value(i,4)>10 and sheet.cell_value(i,4)<=20: #ages 10-20
+  if sheet.cell_value(i,8)=="alive":
+   alive=alive+1
+  else: 
+   dead=dead+1
+  ten_death_percentage=(dead/alive+dead)*100
+ else: #ages less than 10
+  if sheet.cell_value(i,8)=="alive":
+   alive=alive+1
+  else: 
+   dead=dead+1
+  zero_death_percentage=(dead/alive+dead)*100
+  
+ages_percentage=[eighty_death_percentage, sixty_death_percentage, forty_death_percentage, twenty_death_percentage, ten_death_percentage, zero_death_percentage] #list of death percentage of each age group
+
+print("Percentages of patient deaths by age group:")
+print("Age group","\t","Percentage of deaths")
+print("80+","\t",ages_percentage[0])
+print("60-80","\t",ages_percentage[1])
+print("40-60","\t",ages_percentage[2])
+print("20-40","\t",ages_percentage[3])
+print("10-20","\t", ages_percentage[4])
+print("0-10","\t",ages_percentage[5])
