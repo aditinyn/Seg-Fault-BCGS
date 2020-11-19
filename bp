@@ -21,7 +21,7 @@ d20=0
 d10=0
 d0=0
 
-for i in range(1,sheet.nrows): #percentage of patients with respiratory illness
+for i in range(1,sheet.nrows): #percentage of patients with abnormal blood pressure
  if sheet.cell_value(i,7)==1:
   bp=bp+1
   if sheet.cell_value(i,8)=="Dead":
