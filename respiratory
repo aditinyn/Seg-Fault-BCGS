@@ -1,7 +1,7 @@
 #Finding relation between age and respiratory illness with respect to patient deaths
 
 import xlrd
-open=xlrd.open_workbook("/home/dh/Dataset-Mini.xlsx")
+open=xlrd.open_workbook("/home/dh/COVID_Dataset.xlsx")
 sheet=open.sheet_by_index(0)
 sheet.cell_value(0,0)
 
