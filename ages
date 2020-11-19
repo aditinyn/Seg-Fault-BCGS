@@ -1,9 +1,7 @@
 
-import pandas as pd
+#Relation between age and patient deaths
 import xlrd
-dataset=pd.read_excel("/home/dh/Dataset-Mini.xlsx")
-dataset.shape #finding number of rows and columns in the sheet
-open=xlrd.open_workbook("/home/dh/Dataset-Mini.xlsx")
+open=xlrd.open_workbook("/home/dh/COVID_Dataset.xlsx")
 sheet=open.sheet_by_index(0)
 sheet.cell_value(0,0)
 
@@ -28,34 +26,34 @@ for i in range(sheet.nrows): #finding overall death rate
 death_rate=(dead/(sheet.nrows-1))*100
 print("Death rate = ", death_rate)
 
-for i in range(sheet.nrows): #finding death precentage for different ages
- if sheet.cell_value(i+1,4)>80: #ages 80+
-  if sheet.cell_value(i+1,8)=="Alive":
+for i in range(1,sheet.nrows): #finding death precentage for different ages
+ if sheet.cell_value(i,4)>80: #ages 80+
+  if sheet.cell_value(i,8)=="Alive":
    a80=a80+1
   else:
    d80=d80+1
- elif sheet.cell_value(i+1,4)>60 and sheet.cell_value(i+1,4)<=80: #ages 60-80
-  if sheet.cell_value(i+1,8)=="Alive":
+ elif sheet.cell_value(i,4)>60 and sheet.cell_value(i,4)<=80: #ages 60-80
+  if sheet.cell_value(i,8)=="Alive":
    a60=a60+1
   else:
    d60=d60+1
- elif sheet.cell_value(i+1,4)>40 and sheet.cell_value(i+1,4)<=60: #ages 40-60
-  if sheet.cell_value(i+1,8)=="Alive":
+ elif sheet.cell_value(i,4)>40 and sheet.cell_value(i,4)<=60: #ages 40-60
+  if sheet.cell_value(i,8)=="Alive":
    a40=a40+1
   else:
    d40=d40+1
- elif sheet.cell_value(i+1,4)>20 and sheet.cell_value(i+1,4)<=40: #ages 20-40
-  if sheet.cell_value(i+1,8)=="Alive":
+ elif sheet.cell_value(i,4)>20 and sheet.cell_value(1,4)<=40: #ages 20-40
+  if sheet.cell_value(i,8)=="Alive":
    a20=a20+1
   else:
    d20=d20+1
- elif sheet.cell_value(i+1,4)>10 and sheet.cell_value(i+1,4)<=20: #ages 10-20
-  if sheet.cell_value(i+1,8)=="Alive":
+ elif sheet.cell_value(i,4)>10 and sheet.cell_value(i,4)<=20: #ages 10-20
+  if sheet.cell_value(i,8)=="Alive":
    a10=a10+1
   else:
    d10=d10+1
  else: #ages less than 10
-  if sheet.cell_value(i+1,8)=="Alive":
+  if sheet.cell_value(i,8)=="Alive":
    a0=a0+1
   else:
    d0=d0+1
@@ -65,7 +63,7 @@ alive=[a80,a60,a40,a20,a10,a0]
 ages_death_rate=[]
 for i in range(6):
  rate=(deaths[i]/(deaths[i]+alive[i]))*100
- ages_death_rate.extend(rate)
+ ages_death_rate.append(rate)
 
 print("Death rate of each age group:")
 for i in range(6):
