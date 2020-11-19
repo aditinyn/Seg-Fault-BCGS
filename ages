@@ -1,4 +1,3 @@
-
 #Relation between age and patient deaths
 import xlrd
 open=xlrd.open_workbook("/home/dh/COVID_Dataset.xlsx")
@@ -24,7 +23,7 @@ for i in range(sheet.nrows): #finding overall death rate
  if sheet.cell_value(i,8)=="Dead":
   dead=dead+1
 death_rate=(dead/(sheet.nrows-1))*100
-print("Death rate = ", death_rate)
+print("Overall Death rate = ", death_rate,"%")
 
 for i in range(1,sheet.nrows): #finding death precentage for different ages
  if sheet.cell_value(i,4)>80: #ages 80+
@@ -67,5 +66,6 @@ for i in range(6):
 
 print("Death rate of each age group:")
 for i in range(6):
- print(ages[i]," : ", ages_death_rate[i])
+ print(ages[i]," : ", ages_death_rate[i],"%")
+
 
